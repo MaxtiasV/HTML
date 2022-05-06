@@ -1,0 +1,39 @@
+function formValidation() {
+    const formulario = document.getElementById('formulario');
+
+    let patron01 = /^[a-zA-Z\s]+$/;
+    let patron02 = /^[a-zA-Z0-9\s]+$/;  
+
+    let nombre = document.getElementById('nombre').value;
+    let asunto = document.getElementById('asunto').value;
+    let mensaje = document.getElementById('mensaje').value;
+
+    var resultadoNombre = patron01.test(nombre);
+    console.log("Nombre : " + resultadoNombre);
+
+    if (!(patron01.test(nombre))) {
+        console.log("Error en nombre!");
+        document.querySelector(".errorNombre").innerHTML = "Nombre ingresado de forma incorrecta";
+        return false;
+    }else if (!(patron02.test(asunto))){
+        console.log("Error en asunto!");
+        document.querySelector(".errorAsunto").innerHTML = "Asunto ingresado de forma incorrecta"; 
+        return false;
+    }else if(!(patron02.test(mensaje))){
+        console.log("Error en mensaje!");
+        document.querySelector(".errorMensaje").innerHTML = "Mensaje ingresado de forma incorrecta";  
+        return false;
+    }
+
+    return true;
+}
+    
+
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (formValidation()) {
+        document.querySelector(".resultado").innerHTML = "Mensaje enviado con exito !!!";
+        formulario.reset();
+    }
+
+});
