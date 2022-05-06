@@ -1,0 +1,28 @@
+
+function sumar() {
+    var v1 = document.getElementById('valor1').value;
+    var v2 = document.getElementById('valor2').value;
+    var btn = document.getElementById("btn-sumar");
+    btn.addEventListener('click', operacion(1, v1, v2));
+}
+
+function restar() {
+    var v1 = document.getElementById("valor1").value;
+    var v2 = document.getElementById("valor2").value;
+    var btn = document.getElementById("btn-restar");
+    btn.addEventListener('click', operacion(2, v1, v2));
+}
+
+function operacion(n, o1, o2) {
+    if (n==1) {
+        var res = parseInt(o1) + parseInt(o2);
+    }
+    else {
+        var res = parseInt(o1) - parseInt(o2);
+    }
+
+    if (res<0) {
+        res=0;
+    }
+    document.querySelector(".resultado").innerHTML = res;
+}
